@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: imersao-devops
+    ports:
+      - "8000:8000"
+    volumes: 
+    #:/app é pra acessar tudo dentro desta pasta então quando alterar 
+   # projeto não precisa ficar rodando de novo, ele vai mudar automticamente no container
+      - .:/app 
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
